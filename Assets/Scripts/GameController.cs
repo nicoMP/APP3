@@ -16,10 +16,8 @@ public class GameController : MonoBehaviour
     bool isPause = false;
     bool notMenu;
     public bool leaderBoardActive;
-    private PlayerInput inputSystem;
     AsyncOperation asyncLoad;
     void Start(){
-        inputSystem = GetComponent<PlayerInput>();
         notMenu = SceneManager.GetActiveScene().buildIndex != 0;
         if(notMenu){
             player = GameObject.FindWithTag("Player");
@@ -36,7 +34,6 @@ public class GameController : MonoBehaviour
         }
     }
     void OnPause(){
-        inputSystem.SwitchCurrentActionMap("UI");
         if(isPause){
             Destroy(GameObject.FindWithTag("PauseButton"));
             ResumeGame();
